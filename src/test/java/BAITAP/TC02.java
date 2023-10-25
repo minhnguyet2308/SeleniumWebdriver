@@ -6,22 +6,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import java.io.File;
 import static org.testng.AssertJUnit.assertEquals;
 @Test
 public class TC02 {
     public static void testTC02() {
-        int scc = 0;
 
-        StringBuffer verificationError = new StringBuffer();
         //Init web-driver session
         WebDriver driver = driverFactory.getChromeDriver();
         try {
             //Go to http://live.techpanda.org/
             driver.get("http://live.techpanda.org/");
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //Click on  MOBILE  menu
             driver.findElement(By.linkText("MOBILE")).click();
@@ -30,8 +29,8 @@ public class TC02 {
             Thread.sleep(2000);
 
             //In the list of all mobile, read the cost of Sony Xperia mobile (which is $100)
-            String XPeriaPrice = driver.findElement(By.cssSelector("#product-price-1 > span.price")).getText();
-            System.out.println(XPeriaPrice);
+            String PriceInList = driver.findElement(By.cssSelector("#product-price-1 > span.price")).getText();
+            System.out.println("Product value in list: " + PriceInList);
 
             //debug purpose only
             Thread.sleep(2000);
@@ -48,12 +47,16 @@ public class TC02 {
             Thread.sleep(2000);
 
             //Read the Sony Xperia mobile from detail page.
-            String detailPrice = driver.findElement(By.cssSelector("span.price")).getText();
+            String PriceInDetailPage = driver.findElement(By.cssSelector("span.price")).getText();
+            System.out.println("Product value in detail page: " + PriceInDetailPage);
 
             //Compare Product value in list and details page should be equal ($100).
-            assertEquals(XPeriaPrice, detailPrice);
-            if (XPeriaPrice.equals(detailPrice))
-                System.out.printf("XPeriaPrice = detailPrice and price is: %s", detailPrice);
+            assertEquals(PriceInList, PriceInDetailPage);
+            if (PriceInList.equals(PriceInDetailPage)) {
+                System.out.println("Product value in list and detail page is equal: " + PriceInDetailPage);
+            } else {
+                System.out.println("Product value in list and detail page is not equal");
+            }
 
             //debug purpose only
             Thread.sleep(2000);
