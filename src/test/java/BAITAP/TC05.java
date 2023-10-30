@@ -21,10 +21,10 @@ public class TC05 {
         String firstName="Nguyen";
         String middleName="Minh";
         String lastName="Nguyet";
-        String emailAddress = "nguyet123@gmail.com";
+        String emailAddress = "nguyet823@gmail.com";
         String password= "123456";
         String confirmPassword= password;
-        String emailShared= "nguyet321@gmail.com";
+        String emailShared= "nguyet238@gmail.com";
         String message = "Check out my wishlist!";
 
         //init web driver session
@@ -57,30 +57,33 @@ public class TC05 {
                 driver.switchTo().window(handle);
             }
 
+            //debug purpose only
+            Thread.sleep(1000);
+
             registerPage.enterFirstName(firstName);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             registerPage.enterMiddleName(middleName);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             registerPage.enterLastName(lastName);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             registerPage.enterEmail(emailAddress);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             registerPage.enterPassword(password);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             registerPage.enterConfirmPassword(confirmPassword);
 
@@ -146,7 +149,7 @@ public class TC05 {
             }
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             //In next page enter Email and a message and click SHARE WISHLIST
             SharedPage sharedPage = new SharedPage(driver);
@@ -154,7 +157,7 @@ public class TC05 {
             sharedPage.enterEmailShared(emailShared);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             sharedPage.enterMessageShared(message);
 
