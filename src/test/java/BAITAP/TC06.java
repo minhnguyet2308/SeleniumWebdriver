@@ -156,52 +156,52 @@ public class TC06 {
 
             //Enter Billing Information, and click Continue
             CheckOutPage checkoutPage = new CheckOutPage(driver);
-            checkoutPage.selectAddress(address);
+            checkoutPage.selectAddressBilling(address);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterFirstName(firstName);
+            checkoutPage.enterFirstNameBilling(firstName);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterLastName(lastName);
+            checkoutPage.enterLastNameBilling(lastName);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterCompany(company);
+            checkoutPage.enterCompanyBilling(company);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterAddress1(address1);
+            checkoutPage.enterAddress1Billing(address1);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterCity(city);
+            checkoutPage.enterCityBilling(city);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.selectState(state);
+            checkoutPage.selectStateBilling(state);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterZip(zip);
+            checkoutPage.enterZipBilling(zip);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.selectCountry(country);
+            checkoutPage.selectCountryBilling(country);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterTelephone(telephone);
+            checkoutPage.enterTelephoneBilling(telephone);
 
             //debug purpose only
             Thread.sleep(1000);
@@ -213,110 +213,84 @@ public class TC06 {
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.clickContinueButton();
+            checkoutPage.clickContinueBillingButton();
+
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
 
             //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterFirstName(firstName);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterLastName(lastName);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterCompany(company);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterAddress1(address1);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterCity(city);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.selectState(state);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterZip(zip);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.selectCountry(country);
-
-            //debug purpose only
-            Thread.sleep(1000);
-
-            checkoutPage.enterTelephone(telephone);
-
-            //debug purpose only
-            Thread.sleep(1000);
+            Thread.sleep(2000);
 
             //Enter Shipping Information, and click Continue
-            checkoutPage.enterFirstName(firstName);
+            checkoutPage.selectAddressShipping(address);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterLastName(lastName);
+            checkoutPage.enterFirstNameShipping(firstName);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterCompany(company);
+            checkoutPage.enterLastNameShipping(lastName);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterAddress1(address1);
+            checkoutPage.enterCompanyShipping(company);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterCity(city);
+            checkoutPage.enterAddress1Shipping(address1);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.selectState(state);
+            checkoutPage.enterCityShipping(city);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterZip(zip);
+            checkoutPage.selectStateShipping(state);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.selectCountry(country);
+            checkoutPage.enterZipShipping(zip);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.enterTelephone(telephone);
+            checkoutPage.selectCountryShipping(country);
 
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.clickContinueButton();
+            checkoutPage.enterTelephoneShipping(telephone);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.clickContinueShippingButton();
+
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
 
             //debug purpose only
             Thread.sleep(2000);
 
             //In Shipping Method, Click Continue
-//            driver.findElement(By.xpath("//button[@onclick='shippingMethod.save()']")).click();
-            checkoutPage.clickContinueButton();
+            checkoutPage.clickContinueShippingMethodButton();
+
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
 
             //debug purpose only
             Thread.sleep(2000);
@@ -327,9 +301,7 @@ public class TC06 {
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.clickContinueButton();
-
-//            driver.findElement(By.xpath("//button[@onclick='payment.save()']")).click();
+            checkoutPage.clickContinuePaymentButton();
 
             //debug purpose only
             Thread.sleep(2000);
