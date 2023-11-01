@@ -32,6 +32,9 @@ public class CheckOutPage {
     By telephoneInputLocator = By.id("billing:telephone");
 
     By faxInputLocator = By.id("billing:fax");
+    By shipToDifferentAddress = By.xpath("//label[normalize-space()='Ship to different address']");
+    By continueButton = By.xpath("//button[@onclick='billing.save()']//span//span[contains(text(),'Continue')]");
+
 
 
     public CheckOutPage(WebDriver driver) {
@@ -113,6 +116,13 @@ public class CheckOutPage {
         WebElement faxElement = driver.findElement(faxInputLocator);
         faxElement.clear();
         faxElement.sendKeys(fax);
+    }
+
+    public void clickShipToDifferentAddress() {
+        driver.findElement(shipToDifferentAddress).click();
+    }
+    public void clickContinueButton() {
+        driver.findElement(continueButton).click();
     }
 
 }

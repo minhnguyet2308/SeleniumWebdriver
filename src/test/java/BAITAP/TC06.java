@@ -159,7 +159,109 @@ public class TC06 {
             checkoutPage.selectAddress(address);
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
+
+            checkoutPage.enterFirstName(firstName);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterLastName(lastName);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterCompany(company);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterAddress1(address1);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterCity(city);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.selectState(state);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterZip(zip);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.selectCountry(country);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterTelephone(telephone);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+//            driver.findElement(By.cssSelector("button[onclick='billing.save()']")).click();
+
+            checkoutPage.clickShipToDifferentAddress();
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.clickContinueButton();
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterFirstName(firstName);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterLastName(lastName);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterCompany(company);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterAddress1(address1);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterCity(city);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.selectState(state);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterZip(zip);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.selectCountry(country);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterTelephone(telephone);
+
+            //debug purpose only
+            Thread.sleep(1000);
 
             //Enter Shipping Information, and click Continue
             checkoutPage.enterFirstName(firstName);
@@ -207,10 +309,14 @@ public class TC06 {
             //debug purpose only
             Thread.sleep(1000);
 
-            driver.findElement(By.cssSelector("button[onclick='billing.save()']")).click();
+            checkoutPage.clickContinueButton();
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //In Shipping Method, Click Continue
-            driver.findElement(By.xpath("//button[@onclick='shippingMethod.save()']")).click();
+//            driver.findElement(By.xpath("//button[@onclick='shippingMethod.save()']")).click();
+            checkoutPage.clickContinueButton();
 
             //debug purpose only
             Thread.sleep(2000);
@@ -219,9 +325,11 @@ public class TC06 {
             driver.findElement(By.xpath("//label[normalize-space()='Check / Money order']")).click();
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
-            driver.findElement(By.xpath("//button[@onclick='payment.save()']")).click();
+            checkoutPage.clickContinueButton();
+
+//            driver.findElement(By.xpath("//button[@onclick='payment.save()']")).click();
 
             //debug purpose only
             Thread.sleep(2000);
@@ -229,8 +337,10 @@ public class TC06 {
             //Click 'PLACE ORDER' button
             driver.findElement(By.xpath("//button[@title='Place Order']")).click();
 
-            //debug purpose only
-            Thread.sleep(2000);
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
 
             //Verify Oder is generated. Note the order number
             String successOrder = driver.findElement(By.xpath("//h1[normalize-space()='Your order has been received.']")).getText();
