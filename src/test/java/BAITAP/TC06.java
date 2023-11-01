@@ -1,7 +1,8 @@
 package BAITAP;
 
-import POM.CartPage;
 import POM.LoginPage;
+import POM.CartPage;
+import POM.CheckOutPage;
 import driver.driverFactory;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -18,9 +19,18 @@ public class TC06 {
 
     public static void testTC06() {
 
-        String emailAddress = "nguyet321@gmail.com";
+        String emailAddress = "nhom6@gmail.com";
         String password = "123456";
         String zip = "5000";
+        String address="New Address";
+        String firstName ="Group";
+        String lastName ="Six";
+        String address1 ="NVH";
+        String city ="HCM";
+        String state ="Florida";
+        String country ="United States";
+        String telephone ="1234567890";
+        String company ="HCM";
 
         //init web driver session
         WebDriver driver = driverFactory.getChromeDriver();
@@ -145,16 +155,100 @@ public class TC06 {
             Thread.sleep(2000);
 
             //Enter Billing Information, and click Continue
+            CheckOutPage checkoutPage = new CheckOutPage(driver);
+            checkoutPage.selectAddress(address);
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //Enter Shipping Information, and click Continue
+            checkoutPage.enterFirstName(firstName);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterLastName(lastName);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterCompany(company);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterAddress1(address1);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterCity(city);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.selectState(state);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterZip(zip);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.selectCountry(country);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.enterTelephone(telephone);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            driver.findElement(By.cssSelector("button[onclick='billing.save()']")).click();
 
             //In Shipping Method, Click Continue
+            driver.findElement(By.xpath("//button[@onclick='shippingMethod.save()']")).click();
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //In Payment Information select 'Check/Money Order' radio button. Click Continue
+            driver.findElement(By.xpath("//label[normalize-space()='Check / Money order']")).click();
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            driver.findElement(By.xpath("//button[@onclick='payment.save()']")).click();
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //Click 'PLACE ORDER' button
+            driver.findElement(By.xpath("//button[@title='Place Order']")).click();
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //Verify Oder is generated. Note the order number
+            String successOrder = driver.findElement(By.xpath("//h1[normalize-space()='Your order has been received.']")).getText();
+            if (successOrder.contains("YOUR ORDER HAS BEEN RECEIVED")) {
+                System.out.println("ORDER SUCCESS");
+                System.out.println(successOrder);
+
+            } else {
+                System.out.println("ORDER FAILED");
+            }
+
+            //Screenshot
+            scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
+            png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC06" + "_3.png");
+            FileUtils.copyFile(scrFile, new File(png));
+
+            //debug purpose only
+            Thread.sleep(2000);
 
         } catch (Exception e){
             e.printStackTrace();

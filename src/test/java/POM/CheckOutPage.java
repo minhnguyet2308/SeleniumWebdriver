@@ -10,10 +10,10 @@ public class CheckOutPage {
     WebDriver driver;
 
     By addressSelector = By.id("billing-address-select");
-    By firstNameInputLocator = By.id("firstname");
+    By firstNameInputLocator = By.id("billing:firstname");
 
-    By middleNameInputLocator = By.id("middlename");
-    By lastNameInputLocator = By.id("lastname");
+    By middleNameInputLocator = By.id("billing:middlename");
+    By lastNameInputLocator = By.id("billing:lastname");
 
     By companyInputLocator = By.id("billing:company");
 
