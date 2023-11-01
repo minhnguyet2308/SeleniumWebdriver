@@ -15,6 +15,7 @@ public class CartPage {
     By estimateLink = By.xpath("//span[contains(text(),'Estimate')]");
     By tickFlatRate = By.id("s_method_flatrate_flatrate");
     By updateTotalButton = By.xpath("//span[contains(text(),'Update Total')]");
+    By proceedToCheckOutButton = By.xpath("//li[@class='method-checkout-cart-methods-onepage-bottom']//button[@title='Proceed to Checkout']//span//span[contains(text(),'Proceed to Checkout')]");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -50,6 +51,9 @@ public class CartPage {
     }
     public void clickUpdateButton() {
         driver.findElement(updateTotalButton).click();
+    }
+    public void clickProceedToCheckOutButton() {
+        driver.findElement(proceedToCheckOutButton).click();
     }
 
 }

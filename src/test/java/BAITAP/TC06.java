@@ -99,10 +99,10 @@ public class TC06 {
             cartPage.clickEstimateLink();
 
             //Verify Shipping cost generated
-//            String subotal = driver.findElement(By.xpath("//tbody//td[@class='a-right']//span[@class='price'][normalize-space()='$615.00']")).getText();
-//            String grandTotal = driver.findElement(By.xpath("//span[normalize-space()='$615.00']")).getText();
-//            int shippingCost = Integer.parseInt(grandTotal)-Integer.parseInt(subotal);
-//            System.out.println("Shipping cost" + shippingCost);
+            String flatRate = driver.findElement(By.xpath("//dt[normalize-space()='Flat Rate']")).getText();
+            String valueFlatRate = driver.findElement(By.xpath("//label[@for='s_method_flatrate_flatrate']")).getText();
+            System.out.println("Shipping cost generated: " + flatRate);
+            System.out.println("Value: " + valueFlatRate);
 
             //Screenshot
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
@@ -118,19 +118,31 @@ public class TC06 {
             cartPage.clickUpdateButton();
 
             //Verify shipping cost is added to total
-            String shippingCost = driver.findElement(By.xpath("////td[@class='a-right']//span[@class='price'][normalize-space()='$5.00']")).getText();
+            String subTotal = driver.findElement(By.xpath("//tbody//td[@class='a-right']//span[@class='price'][normalize-space()='$615.00']")).getText();
+            String shippingCost = driver.findElement(By.xpath("//td[@class='a-right']//span[@class='price'][normalize-space()='$5.00']")).getText();
+            String grandTotal = driver.findElement(By.xpath("//span[normalize-space()='$620.00']")).getText();
+            System.out.println("Sub Total: " + subTotal);
             System.out.println("Shipping cost" + shippingCost);
-
-            //debug purpose only
-            Thread.sleep(2000);
+            System.out.println("Grand Total: " + grandTotal);
 
             //Screenshot
             scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
             png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC06" + "_2.png");
             FileUtils.copyFile(scrFile, new File(png));
 
-            //Click "Proceed to Checkout"
+            //debug purpose only
+            Thread.sleep(2000);
 
+            //Click "Proceed to Checkout"
+            cartPage.clickProceedToCheckOutButton();
+
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //Enter Billing Information, and click Continue
 
