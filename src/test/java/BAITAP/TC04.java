@@ -19,19 +19,19 @@ public class TC04 {
         WebDriver driver = driverFactory.getChromeDriver();
         try {
 
-            //Go to http://live.techpanda.org/
+            //Step1. Go to http://live.techpanda.org/
             driver.get("http://live.techpanda.org/");
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click on -> MOBILE -> menu
+            //Step2. Click on -> MOBILE -> menu
             driver.findElement(By.linkText("MOBILE")).click();
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //In mobile products list , click on Add To Compare for 2 mobiles (Sony Xperia & Iphone)
+            //Step3. In mobile products list , click on Add To Compare for 2 mobiles (Sony Xperia & Iphone)
             driver.findElement(By.xpath("//li[2]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
 
             //debug purpose only
@@ -42,18 +42,18 @@ public class TC04 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click on COMPARE button. A popup window opens
+            //Step4. Click on COMPARE button. A popup window opens
             driver.findElement(By.xpath("//button[@title='Compare']//span//span[contains(text(),'Compare')]")).click();
 
             //debug purpose only
             Thread.sleep(2000);
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
 
-            //Verify the pop-up window and check that the products are reflected in it
+            //Step5. Verify the pop-up window and check that the products are reflected in it
             String heading = driver.findElement(By.xpath("//h1[normalize-space()='Compare Products']")).getText();
             if (heading.isEmpty()) {
                 System.out.println("Popup window heading not displayed.");
@@ -79,7 +79,7 @@ public class TC04 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Close the Popup Windows
+            //Step6. Close the Popup Windows
             driver.close();
 
             // switching to new window

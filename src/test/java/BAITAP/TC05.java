@@ -31,17 +31,17 @@ public class TC05 {
         WebDriver driver = driverFactory.getChromeDriver();
         try {
 
-            //Go to http://live.techpanda.org/
+            //Step1. Go to http://live.techpanda.org/
             driver.get("http://live.techpanda.org/");
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click on my account link
+            //Step2. Click on my account link
             RegisterPage registerPage = new RegisterPage(driver);
             registerPage.clickMyAccountLink();
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
@@ -49,10 +49,10 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click Create an Account link and fill New User information excluding the registered Email ID
+            //Step3. Click Create an Account link and fill New User information excluding the registered Email ID
             registerPage.clickCreateAccountLink();
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
@@ -90,10 +90,10 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click Register
+            //Step4. Click Register
             registerPage.clickRegister();
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
@@ -101,7 +101,7 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Verify Registration is done. Expected account registration done
+            //Step5. Verify Registration is done. Expected account registration done
             String successMessage = driver.findElement(By.cssSelector("li.success-msg span")).getText();
             String successWelcome = driver.findElement(By.cssSelector("p[class='welcome-msg']")).getText();
             if (successMessage.contains("Thank you for registering with Main Website Store.") && successWelcome.contains("WELCOME, " + firstName.toUpperCase() +" "+ middleName.toUpperCase() +" " + lastName.toUpperCase() + "!")) {
@@ -118,10 +118,10 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Go to TV menu
+            //Step6. Go to TV menu
             driver.findElement(By.linkText("TV")).click();
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
@@ -129,10 +129,10 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Add product in your wish list - use product - LG LCD
+            //Step7. Add product in your wish list - use product - LG LCD
             driver.findElement(By.xpath("(//a[@class='link-wishlist'][normalize-space()='Add to Wishlist'])[1]")).click();
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
@@ -140,10 +140,10 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click SHARE WISHLIST
+            //Step8. Click SHARE WISHLIST
             driver.findElement(By.xpath("(//span[contains(text(),'Share Wishlist')])[1]")).click();
 
-            // switching to new window
+            //switching to new window
             for (String handle : driver.getWindowHandles()) {
                 driver.switchTo().window(handle);
             }
@@ -151,7 +151,7 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(1000);
 
-            //In next page enter Email and a message and click SHARE WISHLIST
+            //Step9. In next page enter Email and a message and click SHARE WISHLIST
             SharedPage sharedPage = new SharedPage(driver);
 
             sharedPage.enterEmailShared(emailShared);
@@ -169,7 +169,7 @@ public class TC05 {
             //debug purpose only
             Thread.sleep(2000);
 
-            //Check wishlist is shared. Expected wishlist shared successfully
+            //Step10. Check wishlist is shared. Expected wishlist shared successfully
             String successMessage2 = driver.findElement(By.xpath("(//span[normalize-space()='Your Wishlist has been shared.'])[1]")).getText();
             if (successMessage2.contains("Your Wishlist has been shared.")) {
                 System.out.println("Wishlist shared successfully.");

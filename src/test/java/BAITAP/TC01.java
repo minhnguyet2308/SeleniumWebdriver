@@ -18,26 +18,26 @@ public class TC01 {
         WebDriver driver = driverFactory.getChromeDriver();
         try {
 
-            //Go to http://live.techpanda.org/
+            //Step1. Go to http://live.techpanda.org/
             driver.get("http://live.techpanda.org/");
 
-            //Verify Title of the page
+            //Step2. Verify Title of the page
             String pageTitle = driver.getTitle();
             System.out.println("Page Title: " + pageTitle);
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click on -> MOBILE -> menu
+            //Step3. Click on -> MOBILE -> menu
             driver.findElement(By.linkText("MOBILE")).click();
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //In the list of all mobile , select SORT BY -> dropdown as name
+            //Step4. In the list of all mobile , select SORT BY -> dropdown as name
             new Select(driver.findElement(By.cssSelector("select[title=\"Sort By\"]"))).selectByVisibleText("Name");
 
-            //Verify all products are sorted by name
+            //Step5. Verify all products are sorted by name
             String Phone1 = driver.findElement(By.cssSelector("h2[class='product-name'] a[title='IPhone']")).getText();
             String Phone2 = driver.findElement(By.cssSelector("h2[class='product-name'] a[title='Samsung Galaxy']")).getText();
             String Phone3 = driver.findElement(By.cssSelector("a[title='Sony Xperia']")).getText();
@@ -50,13 +50,14 @@ public class TC01 {
                 System.out.println("All products are not sorted by name.");
             }
 
-            //debug purpose only
-            Thread.sleep(2000);
-
             //Screenshot
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             String png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC01" + ".png");
             FileUtils.copyFile(scrFile, new File(png));
+
+            //debug purpose only
+            Thread.sleep(2000);
+
         } catch (Exception e){
             e.printStackTrace();
         }

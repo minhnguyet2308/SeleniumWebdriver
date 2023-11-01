@@ -16,19 +16,19 @@ public class TC02 {
         //Init web-driver session
         WebDriver driver = driverFactory.getChromeDriver();
         try {
-            //Go to http://live.techpanda.org/
+            //Step1. Go to http://live.techpanda.org/
             driver.get("http://live.techpanda.org/");
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //Click on  MOBILE  menu
+            //Step2. Click on  MOBILE  menu
             driver.findElement(By.linkText("MOBILE")).click();
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //In the list of all mobile, read the cost of Sony Xperia mobile (which is $100)
+            //Step3. In the list of all mobile, read the cost of Sony Xperia mobile (which is $100)
             String PriceInList = driver.findElement(By.cssSelector("#product-price-1 > span.price")).getText();
             System.out.println("Product value in list: " + PriceInList);
 
@@ -40,17 +40,17 @@ public class TC02 {
             String png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC02" + "_1.png");
             FileUtils.copyFile(scrFile, new File(png));
 
-            //Click on Sony Xperia mobile
+            //Step4. Click on Sony Xperia mobile
             driver.findElement(By.id("product-collection-image-1")).click();
 
             //debug purpose only
             Thread.sleep(2000);
 
-            //Read the Sony Xperia mobile from detail page.
+            //Step5. Read the Sony Xperia mobile from detail page.
             String PriceInDetailPage = driver.findElement(By.cssSelector("span.price")).getText();
             System.out.println("Product value in detail page: " + PriceInDetailPage);
 
-            //Compare Product value in list and details page should be equal ($100).
+            //Step6. Compare Product value in list and details page should be equal ($100).
             assertEquals(PriceInList, PriceInDetailPage);
             if (PriceInList.equals(PriceInDetailPage)) {
                 System.out.println("Product value in list and detail page is equal: " + PriceInDetailPage);
@@ -58,13 +58,14 @@ public class TC02 {
                 System.out.println("Product value in list and detail page is not equal");
             }
 
-            //debug purpose only
-            Thread.sleep(2000);
-
             //Screenshot
             scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC02" + "_2.png");
             FileUtils.copyFile(scrFile, new File(png));
+
+            //debug purpose only
+            Thread.sleep(2000);
+
         }catch (Exception e){
             e.printStackTrace();
         }

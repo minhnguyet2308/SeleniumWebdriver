@@ -40,6 +40,8 @@ public class CheckOutPage {
     By continueShippingButton = By.xpath("//button[@onclick='shipping.save()']//span//span[contains(text(),'Continue')]");
     By continueShippingMethodButton = By.xpath("//button[@onclick='shippingMethod.save()']//span//span[contains(text(),'Continue')]");
     By continuePaymentButton = By.xpath("//button[@class='button']//span//span[contains(text(),'Continue')]");
+    By choosePayment = By.xpath("//label[normalize-space()='Check / Money order']");
+    By placeOrderButton = By.xpath("//button[@title='Place Order']");
 
     public CheckOutPage(WebDriver driver) {
         this.driver = driver;
@@ -188,5 +190,11 @@ public class CheckOutPage {
     }
     public void clickContinuePaymentButton() {
         driver.findElement(continuePaymentButton).click();
+    }
+    public void clickChoosePayment() {
+        driver.findElement(choosePayment).click();
+    }
+    public void clickPlaceOrderButton() {
+        driver.findElement(placeOrderButton).click();
     }
 }
