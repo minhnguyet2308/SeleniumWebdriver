@@ -21,7 +21,7 @@ public class TC05 {
         String firstName="Nguyen";
         String middleName="Minh";
         String lastName="Nguyet";
-        String emailAddress = "nguyet823@gmail.com";
+        String emailAddress = "nguyet888@gmail.com";
         String password= "123456";
         String confirmPassword= password;
         String emailShared= "nguyet238@gmail.com";
@@ -171,11 +171,7 @@ public class TC05 {
 
             //Step10. Check wishlist is shared. Expected wishlist shared successfully
             String successMessage2 = driver.findElement(By.xpath("(//span[normalize-space()='Your Wishlist has been shared.'])[1]")).getText();
-            if (successMessage2.contains("Your Wishlist has been shared.")) {
-                System.out.println("Wishlist shared successfully.");
-            } else {
-                System.out.println("Wishlist sharing failed.");
-            }
+            System.out.println(successMessage2);
 
             //Screenshot
             scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
