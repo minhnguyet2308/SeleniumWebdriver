@@ -1,8 +1,5 @@
 package BAITAP;
 
-<<<<<<< HEAD
-public class TC07 {
-=======
 import POM.LoginPage;
 import driver.driverFactory;
 import org.apache.commons.io.FileUtils;
@@ -115,5 +112,5 @@ public class TC07 {
         driver.quit();
 
     }
->>>>>>> 26b13fd49ff0e8090b108f08fdbef275986100a8
+
 }
