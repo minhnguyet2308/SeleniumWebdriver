@@ -1,6 +1,7 @@
 package BAITAP;
 
 import driver.driverFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,24 @@ public class TC09 {
 
             //debug purpose only
             Thread.sleep(2000);
+
+            //Step2. Go to Mobile and add IPHONE to cart
+            driver.findElement(By.linkText("MOBILE")).click();
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            driver.findElement(By.cssSelector("span[shub-ins='1']"));
+
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            //Step3. Enter Coupon Code
 
         } catch (Exception e){
             e.printStackTrace();
