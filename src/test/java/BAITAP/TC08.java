@@ -174,7 +174,7 @@ public class TC08 {
             //debug purpose only
             Thread.sleep(1000);
 
-            checkoutPage.clickContinuePaymentButton();
+            checkoutPage.clickContinuePaymentButton2();
 
             //debug purpose only
             Thread.sleep(2000);
