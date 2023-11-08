@@ -1,5 +1,6 @@
 package BAITAP;
 
+import POM.CartPage;
 import driver.driverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,8 @@ import org.testng.annotations.Test;
 public class TC09 {
 
     public static void testTC09() {
+
+        String couponCode = "GURU50";
 
         //init web driver session
         WebDriver driver = driverFactory.getChromeDriver();
@@ -37,6 +40,15 @@ public class TC09 {
             Thread.sleep(2000);
 
             //Step3. Enter Coupon Code
+            CartPage cartPage = new CartPage(driver);
+            cartPage.enterCoupon(couponCode);
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            //Step4. Verify the discount generated
+
+
 
         } catch (Exception e){
             e.printStackTrace();

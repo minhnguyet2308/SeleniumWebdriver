@@ -9,6 +9,7 @@ public class CartPage {
 
     WebDriver driver;
     By addToCartButton = By.xpath("//span[contains(text(),'Add to Cart')]");
+    By couponInput = By.id("coupon_code");
     By countryDropdown = By.id("country");
     By stateDropdown = By.id("region_id");
     By zipInput = By.id("postcode");
@@ -24,7 +25,11 @@ public class CartPage {
     public void clickAddToCart() {
         driver.findElement(addToCartButton).click();
     }
-
+    public void enterCoupon(String couponCode) {
+        WebElement zipElement = driver.findElement(couponInput);
+        zipElement.clear();
+        zipElement.sendKeys(couponCode);
+    }
     public void chooseCountry() {
         WebElement dropdownElement = driver.findElement(countryDropdown);
         Select selectOption = new Select(dropdownElement);
@@ -38,9 +43,9 @@ public class CartPage {
     }
 
     public void zipEmail(String zip) {
-        WebElement emailElement = driver.findElement(zipInput);
-        emailElement.clear();
-        emailElement.sendKeys(zip);
+        WebElement zipElement = driver.findElement(zipInput);
+        zipElement.clear();
+        zipElement.sendKeys(zip);
     }
 
     public void clickEstimateLink() {
