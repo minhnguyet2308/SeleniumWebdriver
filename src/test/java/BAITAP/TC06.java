@@ -19,7 +19,7 @@ public class TC06 {
 
     public static void testTC06() {
 
-        String emailAddress = "nhom6@gmail.com";
+        String emailAddress = "nguyet321@gmail.com";
         String password = "123456";
         String zip = "5000";
         String address="New Address";

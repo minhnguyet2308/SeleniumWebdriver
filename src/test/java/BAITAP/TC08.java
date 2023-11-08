@@ -1,5 +1,7 @@
 package BAITAP;
 
+import POM.CheckOutPage;
+import POM.CartPage;
 import POM.LoginPage;
 import driver.driverFactory;
 import org.apache.commons.io.FileUtils;
@@ -16,8 +18,9 @@ import static org.openqa.selenium.OutputType.FILE;
 public class TC08 {
     public static void testTC08() {
 
-        String emailAddress = "nhom6@gmail.com";
+        String emailAddress = "nguyet321@gmail.com";
         String password = "123456";
+        String zip = "5000";
 
         //init web driver session
         WebDriver driver = driverFactory.getChromeDriver();
@@ -74,16 +77,16 @@ public class TC08 {
             //debug purpose only
             Thread.sleep(2000);
 
-            String oldGrandTotal = driver.findElement(By.xpath("//span[normalize-space()='$12,400.00']")).getText();
-            System.out.println("New Grand Total: " + oldGrandTotal);
+            String oldGrandTotal = driver.findElement(By.xpath("//strong//span[@class='price'][normalize-space()='$615.00']")).getText();
+            System.out.println("Old Grand Total: " + oldGrandTotal);
 
             //Screenshot
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
             String png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC08" + "_1.png");
             FileUtils.copyFile(scrFile, new File(png));
 
-            driver.findElement(By.name("cart[216590][qty]")).clear();
-            driver.findElement(By.name("cart[216590][qty]")).sendKeys("10");
+            driver.findElement(By.cssSelector("input[title='Qty']")).clear();
+            driver.findElement(By.cssSelector("input[title='Qty']")).sendKeys("10");
 
             //debug purpose only
             Thread.sleep(2000);
@@ -94,7 +97,7 @@ public class TC08 {
             Thread.sleep(2000);
 
             //Step5. Verify Grand Total is changed
-            String newGrandTotal = driver.findElement(By.xpath("//span[normalize-space()='$6,200.00']")).getText();
+            String newGrandTotal = driver.findElement(By.xpath("//strong//span[@class='price'][normalize-space()='$6,150.00']")).getText();
             System.out.println("New Grand Total: " + newGrandTotal);
 
             //Screenshot
@@ -106,11 +109,99 @@ public class TC08 {
             Thread.sleep(2000);
 
             //Step6. Complete Billing & Shipping Information
+            CartPage cartPage = new CartPage(driver);
+            cartPage.chooseCountry();
 
+            //debug purpose only
+            Thread.sleep(1000);
 
+            cartPage.chooseState();
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            cartPage.zipEmail(zip);
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            cartPage.clickEstimateLink();
+
+            cartPage.clickFlatRate();
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            cartPage.clickUpdateButton();
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            cartPage.clickProceedToCheckOutButton();
+
+            //switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            CheckOutPage checkoutPage = new CheckOutPage(driver);
+
+            checkoutPage.clickContinueBillingButton();
+
+            //switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            checkoutPage.clickContinueShippingMethodButton();
+
+            //switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            checkoutPage.clickChoosePayment();
+
+            //debug purpose only
+            Thread.sleep(1000);
+
+            checkoutPage.clickContinuePaymentButton();
+
+            //debug purpose only
+            Thread.sleep(2000);
+
+            checkoutPage.clickPlaceOrderButton();
+
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
 
             //Step7. Verify order is generated and note the order number
+            String message = driver.findElement(By.xpath("//h1[normalize-space()='Your order has been received.']")).getText();
+            String orderID = driver.findElement(By.xpath("//div[@class='main-container col1-layout']//p[1]")).getText();
+            System.out.println(message);
+            System.out.println(orderID);
 
+            //Screenshot
+            scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
+            png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC08" + "_3.png");
+            FileUtils.copyFile(scrFile, new File(png));
+
+            //debug purpose only
+            Thread.sleep(2000);
 
         } catch (Exception e){
             e.printStackTrace();

@@ -96,6 +96,14 @@ public class TC07 {
                 driver.switchTo().window(handle);
             }
 
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
+
+            //debug purpose only
+            Thread.sleep(2000);
+
             //Screenshot
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
             String png = ("D:\\FPT\\Chuyên ngành 5\\SWT301\\SeleniumWebdriver\\SeleniumWebdriver\\" + "TC07" + ".png");
