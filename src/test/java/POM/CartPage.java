@@ -8,8 +8,10 @@ import org.openqa.selenium.support.ui.Select;
 public class CartPage {
 
     WebDriver driver;
-    By addToCartButton = By.xpath("//span[contains(text(),'Add to Cart')]");
+    By addToCartButton = By.xpath("//li[1]//div[1]//div[3]//button[1]//span[1]//span[1]");
     By couponInput = By.id("coupon_code");
+    By applyCoupon = By.xpath("//span[contains(text(),'Apply')]");
+//    By applyCoupon = By.cssSelector("span[shub-ins='1']");
     By countryDropdown = By.id("country");
     By stateDropdown = By.id("region_id");
     By zipInput = By.id("postcode");
@@ -29,6 +31,9 @@ public class CartPage {
         WebElement zipElement = driver.findElement(couponInput);
         zipElement.clear();
         zipElement.sendKeys(couponCode);
+    }
+    public void clickApplyCoupon() {
+        driver.findElement(applyCoupon).click();
     }
     public void chooseCountry() {
         WebElement dropdownElement = driver.findElement(countryDropdown);
