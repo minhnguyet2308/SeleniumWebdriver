@@ -21,10 +21,10 @@ public class TC05 {
         String firstName="Nguyen";
         String middleName="Minh";
         String lastName="Nguyet";
-        String emailAddress = "nguyet1@gmail.com";
+        String emailAddress = "nguyet3@gmail.com";
         String password= "123456";
         String confirmPassword= password;
-        String emailShared= "nguyet2@gmail.com";
+        String emailShared= "nguyet@gmail.com";
         String message = "Check out my wishlist!";
 
         //init web driver session

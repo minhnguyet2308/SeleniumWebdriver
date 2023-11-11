@@ -32,12 +32,14 @@ public class TC04 {
             Thread.sleep(2000);
 
             //Step3. In mobile products list , click on Add To Compare for 2 mobiles (Sony Xperia & Iphone)
-            driver.findElement(By.xpath("//li[2]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
+//            driver.findElement(By.xpath("//li[2]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
+            driver.findElement(By.xpath("//li[3]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
 
             //debug purpose only
             Thread.sleep(2000);
 
-            driver.findElement(By.xpath("//li[3]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
+//            driver.findElement(By.xpath("//li[3]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
+            driver.findElement(By.xpath("//li[1]//div[1]//div[3]//ul[1]//li[2]//a[1]")).click();
 
             //debug purpose only
             Thread.sleep(2000);
@@ -46,7 +48,7 @@ public class TC04 {
             driver.findElement(By.xpath("//button[@title='Compare']//span//span[contains(text(),'Compare')]")).click();
 
             //debug purpose only
-            Thread.sleep(2000);
+            Thread.sleep(5000);
 
             //switching to new window
             for (String handle : driver.getWindowHandles()) {
@@ -60,6 +62,10 @@ public class TC04 {
             } else {
                 System.out.println("Popup window heading: " + heading);
             }
+
+            //debug purpose only
+            Thread.sleep(2000);
+
             System.out.println("Selected products: ");
             String product1 = driver.findElement(By.xpath("//a[normalize-space()='Sony Xperia']")).getText();
             String product2 = driver.findElement(By.xpath("//a[normalize-space()='IPhone']")).getText();

@@ -96,7 +96,7 @@ public class TC10 {
             FileUtils.copyFile(scrFile, new File(png));
 
             //debug purpose only
-            Thread.sleep(1000);
+            Thread.sleep(2000);
 
         } catch (Exception e){
             e.printStackTrace();

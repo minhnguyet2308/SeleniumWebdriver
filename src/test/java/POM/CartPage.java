@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 public class CartPage {
 
     WebDriver driver;
-    By addToCartButton = By.xpath("//li[1]//div[1]//div[3]//button[1]//span[1]//span[1]");
+    By addToCartButton = By.xpath("//button[@type='button']//span//span[contains(text(),'Add to Cart')]");
     By couponInput = By.id("coupon_code");
     By applyCoupon = By.xpath("//span[contains(text(),'Apply')]");
 //    By applyCoupon = By.cssSelector("span[shub-ins='1']");
