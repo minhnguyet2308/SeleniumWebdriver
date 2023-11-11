@@ -91,10 +91,8 @@ public class TC07 {
 //            driver.findElement(By.linkText("PRINT ORDER")).click();
             driver.findElement(By.xpath("//a[normalize-space()='Print Order']")).click();
 
-            // switching to new window
-            for (String handle : driver.getWindowHandles()) {
-                driver.switchTo().window(handle);
-            }
+            //debug purpose only
+            Thread.sleep(5000);
 
             // switching to new window
             for (String handle : driver.getWindowHandles()) {
